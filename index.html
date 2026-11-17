@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f7fb">
+  <meta name="description" content="Тренажёр по вопросам реанимации — 300 вопросов, 6 занятий по 50 вопросов.">
+  <title>Тренажёр — реанимация</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <a class="brand" href="#" id="homeLink" aria-label="На главную">
+        <span class="brand-mark">+</span><span>Тренажёр</span>
+      </a>
+      <button class="icon-button" id="resetAllBtn" title="Сбросить весь прогресс" aria-label="Сбросить весь прогресс">↺</button>
+    </header>
+
+    <section id="homeScreen" class="screen">
+      <div class="hero">
+        <div class="eyebrow">ПОДГОТОВКА К ЭКЗАМЕНУ</div>
+        <h1>Реанимация<br><span>и первая помощь</span></h1>
+        <p>300 вопросов · 6 занятий · мгновенная проверка ответов</p>
+        <div class="overall-track"><div id="overallBar"></div></div>
+        <div class="overall-meta"><span id="overallDone">0 из 300 пройдено</span><span id="overallPercent">0%</span></div>
+      </div>
+      <div class="section-heading">
+        <div><div class="eyebrow">ТВОЙ МАРШРУТ</div><h2>Выбери занятие</h2></div>
+        <span class="small-muted">по 50 вопросов</span>
+      </div>
+      <div id="lessons" class="lesson-grid"></div>
+      <p class="footnote">Прогресс сохраняется на этом устройстве автоматически.</p>
+    </section>
+
+    <section id="quizScreen" class="screen hidden">
+      <div class="quiz-top">
+        <button class="back-button" id="backBtn">← Занятия</button>
+        <span class="lesson-chip" id="lessonChip">Занятие 1</span>
+      </div>
+      <div class="progress-row">
+        <div class="progress-track"><div id="lessonBar"></div></div>
+        <span id="progressText">1 / 50</span>
+      </div>
+      <div class="stats-row">
+        <span class="stat correct-stat">✓ <b id="correctCount">0</b> верно</span>
+        <span class="stat wrong-stat">✕ <b id="wrongCount">0</b> ошибок</span>
+        <span class="stat muted-stat" id="remainingCount">50 осталось</span>
+      </div>
+      <article class="question-card">
+        <div class="question-meta"><span id="questionNumber">ВОПРОС 1</span><span id="questionId"></span></div>
+        <h2 id="questionText"></h2>
+        <div id="answers" class="answers"></div>
+        <div id="feedback" class="feedback hidden" aria-live="polite"></div>
+      </article>
+      <div class="quiz-actions">
+        <button id="nextBtn" class="primary-button" disabled>Следующий вопрос <span>→</span></button>
+        <button id="finishBtn" class="text-button">Завершить занятие</button>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen hidden">
+      <button class="back-button" id="resultHomeBtn">← К занятиям</button>
+      <div class="result-hero">
+        <div class="result-icon" id="resultIcon">✓</div>
+        <div class="eyebrow">ЗАНЯТИЕ ЗАВЕРШЕНО</div>
+        <h1 id="resultTitle">Хорошая работа!</h1>
+        <div class="score" id="resultScore">0/50</div>
+        <p id="resultSummary"></p>
+      </div>
+      <div class="result-stats">
+        <div><b class="green" id="resultCorrect">0</b><span>Правильно</span></div>
+        <div><b class="red" id="resultWrong">0</b><span>Ошибки</span></div>
+        <div><b id="resultPercent">0%</b><span>Результат</span></div>
+      </div>
+      <div class="review-heading"><h2>Разбор ошибок</h2><span id="mistakeLabel">0 вопросов</span></div>
+      <div id="mistakes" class="mistakes-list"></div>
+      <div class="result-actions">
+        <button id="retryBtn" class="primary-button">Пройти занятие ещё раз</button>
+        <button id="retryMistakesBtn" class="secondary-button">Повторить ошибки</button>
+        <button id="resultHomeBtn2" class="text-button">Выбрать другое занятие</button>
+      </div>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
